@@ -7,10 +7,11 @@
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.3.353">
 
-  <title>Untitled</title>
+  <meta name="author" content="Kotaro Okano">
+  <title>はじめてのR</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -28,6 +29,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #f8f8f2;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #f8f8f2; } /* Normal */
+    code span.al { color: #f07178; background-color: #2a0f15; font-weight: bold; } /* Alert */
+    code span.an { color: #d4d0ab; } /* Annotation */
+    code span.at { color: #00e0e0; } /* Attribute */
+    code span.bn { color: #d4d0ab; } /* BaseN */
+    code span.bu { color: #abe338; } /* BuiltIn */
+    code span.cf { color: #ffa07a; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #abe338; } /* Char */
+    code span.cn { color: #ffd700; } /* Constant */
+    code span.co { color: #f8f8f2; font-style: italic; } /* Comment */
+    code span.cv { color: #ffd700; } /* CommentVar */
+    code span.do { color: #f8f8f2; } /* Documentation */
+    code span.dt { color: #ffa07a; } /* DataType */
+    code span.dv { color: #d4d0ab; } /* DecVal */
+    code span.er { color: #f07178; text-decoration: underline; } /* Error */
+    code span.ex { color: #00e0e0; font-weight: bold; } /* Extension */
+    code span.fl { color: #d4d0ab; } /* Float */
+    code span.fu { color: #ffa07a; } /* Function */
+    code span.im { color: #abe338; } /* Import */
+    code span.in { color: #d4d0ab; } /* Information */
+    code span.kw { color: #ffa07a; font-weight: bold; } /* Keyword */
+    code span.op { color: #ffa07a; } /* Operator */
+    code span.ot { color: #00e0e0; } /* Other */
+    code span.pp { color: #dcc6e0; } /* Preprocessor */
+    code span.re { color: #00e0e0; background-color: #f8f8f2; } /* RegionMarker */
+    code span.sc { color: #abe338; } /* SpecialChar */
+    code span.ss { color: #abe338; } /* SpecialString */
+    code span.st { color: #abe338; } /* String */
+    code span.va { color: #00e0e0; } /* Variable */
+    code span.vs { color: #abe338; } /* VerbatimString */
+    code span.wa { color: #dcc6e0; } /* Warning */
   </style>
   <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -318,42 +384,523 @@
       margin-right: 0; 
     }
   </style>
+  
+  <link href="index_files/libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+  <script src="index_files/libs/pagedtable-1.1/js/pagedtable.js"></script>
 </head>
-<body class="quarto-light">
+<body class="quarto-dark">
   <div class="reveal">
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Untitled</h1>
+  <h1 class="title">はじめてのR</h1>
 
 <div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Kotaro Okano 
+</div>
+</div>
 </div>
 
 </section>
-<section id="quarto" class="slide level2">
-<h2>Quarto</h2>
-<p>Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <a href="https://quarto.org/docs/presentations/" class="uri">https://quarto.org/docs/presentations/</a>.</p>
+<section>
+<section id="rとは" class="title-slide slide level1 center">
+<h1>Rとは？</h1>
+
 </section>
-<section id="bullets" class="slide level2">
-<h2>Bullets</h2>
-<p>When you click the <strong>Render</strong> button a document will be generated that includes:</p>
-<ul>
-<li>Content authored with markdown</li>
-<li>Output from executable code</li>
-</ul>
+<section id="rとは①" class="slide level2">
+<h2>Rとは？①</h2>
+<blockquote>
+<p>Rは<strong><em>統計計算とグラフィックスのための言語と環境</em></strong>である。<br>
+https://www.r-project.org/about.html より一部抜粋; translated by https://www.deepl.com/</p>
+</blockquote>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>Rはプログラミング言語の仲間として扱われますが、統計解析をするための作業環境を提供するソフトと考えるとわかりやすいです。</p>
+</div>
+</div>
+</div>
 </section>
-<section id="code" class="slide level2">
-<h2>Code</h2>
-<p>When you click the <strong>Render</strong> button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:</p>
+<section id="rとは②" class="slide level2">
+<h2>Rとは？②</h2>
+<blockquote>
+<p>Rは、<strong><em>多種多様な統計的手法</em></strong>（線形・非線形モデリング、古典的統計検定、時系列分析、分類、クラスタリング、…）や<strong><em>グラフィカルな手法</em></strong>を提供し、非常に拡張性が高い。<br>
+https://www.r-project.org/about.html より一部抜粋; translated by https://www.deepl.com/</p>
+</blockquote>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>Rには統計解析や可視化を行う上で有用なパッケージがそろっています。</p>
+</div>
+</div>
+</div>
+</section>
+<section id="rとは③" class="slide level2">
+<h2>Rとは？③</h2>
+<blockquote>
+<p>Rの強みの1つは、必要に応じて数学記号や数式を含め、出版物レベルの<strong><em>プロットを簡単に作成できる</em></strong>ことである。<br>
+https://www.r-project.org/about.html より一部抜粋; translated by https://www.deepl.com/</p>
+</blockquote>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>（慣れれば）Rを使って嫌いなグラフを簡単に作成することができます。</p>
+</div>
+</div>
+</div>
+</section>
+<section id="rとは④" class="slide level2">
+<h2>Rとは？④</h2>
+<blockquote>
+<p>Rは、フリーソフトウェア財団のGNU一般公衆利用許諾契約書の条項の下、ソースコード形式で<strong><em>フリーソフトウェアとして利用可能</em></strong>である。<br>
+https://www.r-project.org/about.html より一部抜粋; translated by https://www.deepl.com/</p>
+</blockquote>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>Rはフリーソフトかつクロスプラットフォームに対応しているので、容易に利用することが可能です。</p>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="rでできること" class="title-slide slide level1 center">
+<h1>Rでできること</h1>
+
+</section>
+<section id="計算" class="slide level2">
+<h2>計算</h2>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
 </div>
-<div class="footer footer-default">
-
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span> <span class="sc">*</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]   1   4   9  16  25  36  49  64  81 100</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">sum</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 55</code></pre>
+</div>
 </div>
 </section>
+<section id="描画" class="slide level2">
+<h2>描画</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">plot</span>(iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Petal.Length, <span class="at">col =</span> iris<span class="sc">$</span>Species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
+<section id="データの読み書き" class="slide level2">
+<h2>データの読み書き</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>d <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb10-2"><a href="#cb10-2"></a>  <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, </span>
+<span id="cb10-3"><a href="#cb10-3"></a>  <span class="at">y =</span> LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span>
+<span id="cb10-4"><a href="#cb10-4"></a>)</span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="fu">head</span>(d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  x y
+1 1 A
+2 2 B
+3 3 C
+4 4 D
+5 5 E
+6 6 F</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">write.csv</span>(d, <span class="st">"d.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb12-2"><a href="#cb12-2"></a>d_read <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"d.csv"</span>)</span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="fu">head</span>(d_read)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  x y
+1 1 A
+2 2 B
+3 3 C
+4 4 D
+5 5 E
+6 6 F</code></pre>
+</div>
+</div>
+</section></section>
+<section>
+<section id="rのデータ型データ構造" class="title-slide slide level1 center">
+<h1>Rのデータ型データ構造</h1>
+<p>https://stats.biopapyrus.jp/r/basic/data-type.html ## データ型 数字や文字などの型が存在する</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">typeof</span>(1L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "integer"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">typeof</span>(<span class="fl">1.11</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "double"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">typeof</span>(<span class="st">"one"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "character"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">typeof</span>(<span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "logical"</code></pre>
+</div>
+</div>
+</section>
+<section id="データ構造" class="slide level2">
+<h2>データ構造</h2>
+<p>ベクトルや行列、データフレーム、リストなどが存在する</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">class</span>(1L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "integer"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">class</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "integer"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">class</span>(<span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">ncol =</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "matrix" "array" </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">class</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "data.frame"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">class</span>(<span class="fu">list</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "list"</code></pre>
+</div>
+</div>
+</section>
+<section id="覚えておきたいデータ構造" class="slide level2">
+<h2>覚えておきたいデータ構造</h2>
+<ul>
+<li>同じ型の要素が一列に入った<strong><em>ベクトル</em></strong></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "A" "B" "C" "D" "E" "F" "G" "H" "I" "J"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  TRUE FALSE  TRUE</code></pre>
+</div>
+</div>
+</section>
+<section id="覚えておきたいデータ構造-1" class="slide level2">
+<h2>覚えておきたいデータ構造</h2>
+<ul>
+<li>要素数が同じベクトルを1セットにした<strong><em>データフレーム</em></strong></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="fu">data.frame</span>(</span>
+<span id="cb38-2"><a href="#cb38-2"></a>  <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, </span>
+<span id="cb38-3"><a href="#cb38-3"></a>  <span class="at">y =</span> LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>], </span>
+<span id="cb38-4"><a href="#cb38-4"></a>  <span class="at">z =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)</span>
+<span id="cb38-5"><a href="#cb38-5"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  x y     z
+1 1 A  TRUE
+2 2 B FALSE
+3 3 C  TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="fu">head</span>(iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+1          5.1         3.5          1.4         0.2  setosa
+2          4.9         3.0          1.4         0.2  setosa
+3          4.7         3.2          1.3         0.2  setosa
+4          4.6         3.1          1.5         0.2  setosa
+5          5.0         3.6          1.4         0.2  setosa
+6          5.4         3.9          1.7         0.4  setosa</code></pre>
+</div>
+</div>
+</section>
+<section id="データフレームについて" class="slide level2">
+<h2>データフレームについて</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a>rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>(<span class="fu">head</span>(iris))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Sepal.Length"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["Sepal.Width"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Petal.Length"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Petal.Width"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["Species"],"name":[5],"type":["fct"],"align":["left"]}],"data":[{"1":"5.1","2":"3.5","3":"1.4","4":"0.2","5":"setosa","_rn_":"1"},{"1":"4.9","2":"3.0","3":"1.4","4":"0.2","5":"setosa","_rn_":"2"},{"1":"4.7","2":"3.2","3":"1.3","4":"0.2","5":"setosa","_rn_":"3"},{"1":"4.6","2":"3.1","3":"1.5","4":"0.2","5":"setosa","_rn_":"4"},{"1":"5.0","2":"3.6","3":"1.4","4":"0.2","5":"setosa","_rn_":"5"},{"1":"5.4","2":"3.9","3":"1.7","4":"0.4","5":"setosa","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/Flores_de_Íris.png"></p>
+<figcaption><span style="font-size: 20%; ">https://commons.wikimedia.org/wiki/File:Flores_de_%C3%8Dris.png#/media/File:Flores_de_Íris.png</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>生態学で用いるデータは表形式のことが多いためRに取り込むと必然的にデータフレームになる。</li>
+<li>少なくとも「同じ列には同じタイプの情報」という形式になっている必要がある。</li>
+</ul>
+</section>
+<section id="tidyなデータとは" class="slide level2">
+<h2>Tidyなデータとは？</h2>
+<blockquote>
+<p>整頓されたデータとは、作業がしやすいデータのことである。（dplyrで）つぶしたり、（ggplot2やggvisで）可視化したり、（Rの何百ものモデリング・パッケージで）モデル化したりするのが簡単である。整頓されたデータの2つの最も重要な特性は、以下の通りである：</p>
+<ul>
+<li><strong><em>各列は変数である。</em></strong></li>
+<li><strong><em>各行がオブザベーションである。</em></strong></li>
+</ul>
+</blockquote>
+</section>
+<section id="tidyなデータとは-1" class="slide level2">
+<h2>Tidyなデータとは？</h2>
+<blockquote>
+<p>(続き)<br>
+このようにデータを並べると、変数（列名）とオブザベーション（行インデックス）を参照する一貫した方法があるので、作業が簡単になります。整頓されたデータと整頓されたツールを使用すると、ある関数からの出力を別の関数の入力にどのように与えるかについて悩む時間が減り、データについての質問に答える時間が増えます。</p>
+<p><a href="https://posit.co/blog/introducing-tidyr/">Introducing tidyr</a>より一部抜粋。DeepLで翻訳</p>
+</blockquote>
+</section>
+<section id="tidyなデータとは-2" class="slide level2">
+<h2>Tidyなデータとは？</h2>
+<p>データ記録時にも最終的にはTidyなデータにして扱うことが想定されていることが望ましく、解析前にはTidyなデータに整形できていることが望ましい。</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a>rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>(<span class="fu">head</span>(palmerpenguins<span class="sc">::</span>penguins_raw))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["studyName"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Sample Number"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Species"],"name":[3],"type":["chr"],"align":["left"]},{"label":["Region"],"name":[4],"type":["chr"],"align":["left"]},{"label":["Island"],"name":[5],"type":["chr"],"align":["left"]},{"label":["Stage"],"name":[6],"type":["chr"],"align":["left"]},{"label":["Individual ID"],"name":[7],"type":["chr"],"align":["left"]},{"label":["Clutch Completion"],"name":[8],"type":["chr"],"align":["left"]},{"label":["Date Egg"],"name":[9],"type":["date"],"align":["right"]},{"label":["Culmen Length (mm)"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["Culmen Depth (mm)"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["Flipper Length (mm)"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["Body Mass (g)"],"name":[13],"type":["dbl"],"align":["right"]},{"label":["Sex"],"name":[14],"type":["chr"],"align":["left"]},{"label":["Delta 15 N (o/oo)"],"name":[15],"type":["dbl"],"align":["right"]},{"label":["Delta 13 C (o/oo)"],"name":[16],"type":["dbl"],"align":["right"]},{"label":["Comments"],"name":[17],"type":["chr"],"align":["left"]}],"data":[{"1":"PAL0708","2":"1","3":"Adelie Penguin (Pygoscelis adeliae)","4":"Anvers","5":"Torgersen","6":"Adult, 1 Egg Stage","7":"N1A1","8":"Yes","9":"2007-11-11","10":"39.1","11":"18.7","12":"181","13":"3750","14":"MALE","15":"NA","16":"NA","17":"Not enough blood for isotopes."},{"1":"PAL0708","2":"2","3":"Adelie Penguin (Pygoscelis adeliae)","4":"Anvers","5":"Torgersen","6":"Adult, 1 Egg Stage","7":"N1A2","8":"Yes","9":"2007-11-11","10":"39.5","11":"17.4","12":"186","13":"3800","14":"FEMALE","15":"8.94956","16":"-24.69454","17":"NA"},{"1":"PAL0708","2":"3","3":"Adelie Penguin (Pygoscelis adeliae)","4":"Anvers","5":"Torgersen","6":"Adult, 1 Egg Stage","7":"N2A1","8":"Yes","9":"2007-11-16","10":"40.3","11":"18.0","12":"195","13":"3250","14":"FEMALE","15":"8.36821","16":"-25.33302","17":"NA"},{"1":"PAL0708","2":"4","3":"Adelie Penguin (Pygoscelis adeliae)","4":"Anvers","5":"Torgersen","6":"Adult, 1 Egg Stage","7":"N2A2","8":"Yes","9":"2007-11-16","10":"NA","11":"NA","12":"NA","13":"NA","14":"NA","15":"NA","16":"NA","17":"Adult not sampled."},{"1":"PAL0708","2":"5","3":"Adelie Penguin (Pygoscelis adeliae)","4":"Anvers","5":"Torgersen","6":"Adult, 1 Egg Stage","7":"N3A1","8":"Yes","9":"2007-11-16","10":"36.7","11":"19.3","12":"193","13":"3450","14":"FEMALE","15":"8.76651","16":"-25.32426","17":"NA"},{"1":"PAL0708","2":"6","3":"Adelie Penguin (Pygoscelis adeliae)","4":"Anvers","5":"Torgersen","6":"Adult, 1 Egg Stage","7":"N3A2","8":"Yes","9":"2007-11-16","10":"39.3","11":"20.6","12":"190","13":"3650","14":"MALE","15":"8.66496","16":"-25.29805","17":"NA"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/culmen_depth.png"></p>
+<figcaption><span style="font-size: 20%; ">https://allisonhorst.github.io/palmerpenguins/</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="データ解析の流れ" class="slide level2">
+<h2>データ解析の流れ</h2>
+
+<img data-src="images/base.png" class="r-stretch quarto-figure-center"><p class="caption"><span style="font-size: 20%; ">https://r4ds.hadley.nz/intro.html</span></p></section>
+<section id="詳しくはr-for-data-scienceをチェック" class="slide level2">
+<h2>詳しくは<em>R for Data Science</em>をチェック！</h2>
+
+<img data-src="images/R4ds.png" class="r-stretch quarto-figure-center"><p class="caption">https://r4ds.hadley.nz/</p></section></section>
+<section>
+<section id="rを使ってみよう" class="title-slide slide level1 center">
+<h1>Rを使ってみよう！</h1>
+
+</section>
+<section id="ダウンロードインストール" class="slide level2">
+<h2>ダウンロード＆インストール</h2>
+<ul>
+<li><p>CRANからRのダウンロード＆インストール https://cran.r-project.org/</p></li>
+<li><p>PositからRStudioのダウンロード＆インストール https://posit.co/download/rstudio-desktop/</p></li>
+</ul>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>基本的にはRのインストール→RStudioのインストールの順で流れに沿って作業すれば、簡単に作業環境を整えることができます。またここらへんについてはたくさんの参考ページがあります。</p>
+</div>
+</div>
+</div>
+</section>
+<section id="rstudioを起動しよう" class="slide level2">
+<h2>RStudioを起動しよう</h2>
+<p>インストールが終わったらRStudioを起動してみましょう。RStudioはRのIDE（統合開発環境）であり、この画面の中だけで多くの作業を簡潔に完結できます。</p>
+<div class="column" style="width:80%;">
+<p><img data-src="images/rstudio.png"></p>
+</div>
+</section>
+<section id="パッケージをインストールしよう" class="slide level2">
+<h2>パッケージをインストールしよう！</h2>
+<p>RStudioを起動出来たらパッケージをインストールしてみましょう。パッケージは使いやすいようにひとまとめにされたRの関数の集合であり、インストールすることでさまざまな作業が可能になります。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
+<span id="cb44-2"><a href="#cb44-2"></a><span class="fu">install.packages</span>(<span class="st">"palmerpenguins"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>インストールが成功したら<code>library</code>関数で読み込んでみましょう。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb45-2"><a href="#cb45-2"></a><span class="fu">library</span>(palmerpenguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="データを見てみよう" class="slide level2">
+<h2>データを見てみよう！</h2>
+<p>先ほどインストールした<code>palmerpenguins</code>パッケージには、南極のパルマ―・ステーションで調査されたペンギンのくちばしの長さのデータが入っています。<br>
+データの一つは<code>penguins_raw</code>という名前で呼び出すことができます。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a>penguins_raw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 344 × 17
+   studyName `Sample Number` Species         Region Island Stage `Individual ID`
+   &lt;chr&gt;               &lt;dbl&gt; &lt;chr&gt;           &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;          
+ 1 PAL0708                 1 Adelie Penguin… Anvers Torge… Adul… N1A1           
+ 2 PAL0708                 2 Adelie Penguin… Anvers Torge… Adul… N1A2           
+ 3 PAL0708                 3 Adelie Penguin… Anvers Torge… Adul… N2A1           
+ 4 PAL0708                 4 Adelie Penguin… Anvers Torge… Adul… N2A2           
+ 5 PAL0708                 5 Adelie Penguin… Anvers Torge… Adul… N3A1           
+ 6 PAL0708                 6 Adelie Penguin… Anvers Torge… Adul… N3A2           
+ 7 PAL0708                 7 Adelie Penguin… Anvers Torge… Adul… N4A1           
+ 8 PAL0708                 8 Adelie Penguin… Anvers Torge… Adul… N4A2           
+ 9 PAL0708                 9 Adelie Penguin… Anvers Torge… Adul… N5A1           
+10 PAL0708                10 Adelie Penguin… Anvers Torge… Adul… N5A2           
+# ℹ 334 more rows
+# ℹ 10 more variables: `Clutch Completion` &lt;chr&gt;, `Date Egg` &lt;date&gt;,
+#   `Culmen Length (mm)` &lt;dbl&gt;, `Culmen Depth (mm)` &lt;dbl&gt;,
+#   `Flipper Length (mm)` &lt;dbl&gt;, `Body Mass (g)` &lt;dbl&gt;, Sex &lt;chr&gt;,
+#   `Delta 15 N (o/oo)` &lt;dbl&gt;, `Delta 13 C (o/oo)` &lt;dbl&gt;, Comments &lt;chr&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="データを見てみよう-1" class="slide level2">
+<h2>データを見てみよう！</h2>
+<p>このように、Rでは特定のデータにたいして名前をつけて、それを簡単に呼び出すことができます。 このようなデータ一つ一つを<strong><em>オブジェクト</em></strong>といい、つけられた名前をオブジェクト名といいます。<br>
+自分でオブジェクトを作る際には</p>
+<pre><code>(オブジェクト名) &lt;- (入れたい中身)</code></pre>
+<p>という形式をとります。<br>
+例えば<code>penguins_raw</code>のコピーを<code>penguins_raw_copy</code>という名前のオブジェクトに入れたい場合には以下のようになります。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a>penguins_raw_copy <span class="ot">&lt;-</span> penguins_raw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="データを取り出してみよう" class="slide level2">
+<h2>データを取り出してみよう！</h2>
+<p><code>select</code>という関数を使うことでデータフレームの特定の列を抜き出すことができます。また、<code>slice</code>という関数を使うことで特定の行を抜き出すことができます。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a>penguins_raw <span class="sc">%&gt;%</span> </span>
+<span id="cb50-2"><a href="#cb50-2"></a>  <span class="fu">select</span>(studyName, <span class="st">`</span><span class="at">Sample Number</span><span class="st">`</span>, Species, <span class="st">`</span><span class="at">Culmen Length (mm)</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb50-3"><a href="#cb50-3"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 4
+  studyName `Sample Number` Species                         `Culmen Length (mm)`
+  &lt;chr&gt;               &lt;dbl&gt; &lt;chr&gt;                                          &lt;dbl&gt;
+1 PAL0708                 1 Adelie Penguin (Pygoscelis ade…                 39.1
+2 PAL0708                 2 Adelie Penguin (Pygoscelis ade…                 39.5
+3 PAL0708                 3 Adelie Penguin (Pygoscelis ade…                 40.3
+4 PAL0708                 4 Adelie Penguin (Pygoscelis ade…                 NA  
+5 PAL0708                 5 Adelie Penguin (Pygoscelis ade…                 36.7</code></pre>
+</div>
+</div>
+</section>
+<section id="データから計算してみよう" class="slide level2">
+<h2>データから計算してみよう！</h2>
+<p><code>mutate</code>という関数を使うと、行同士の値から算出した新しい値を新しい行としてデータフレームに付け加えることができます。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a>penguins_raw <span class="sc">%&gt;%</span> </span>
+<span id="cb52-2"><a href="#cb52-2"></a>  <span class="fu">select</span>(studyName, <span class="st">`</span><span class="at">Culmen Length (mm)</span><span class="st">`</span>, <span class="st">`</span><span class="at">Culmen Depth (mm)</span><span class="st">`</span> ) <span class="sc">%&gt;%</span> </span>
+<span id="cb52-3"><a href="#cb52-3"></a>  <span class="fu">mutate</span>(<span class="at">Culmen_ratio =</span> <span class="st">`</span><span class="at">Culmen Length (mm)</span><span class="st">`</span> <span class="sc">/</span> <span class="st">`</span><span class="at">Culmen Depth (mm)</span><span class="st">`</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 344 × 4
+   studyName `Culmen Length (mm)` `Culmen Depth (mm)` Culmen_ratio
+   &lt;chr&gt;                    &lt;dbl&gt;               &lt;dbl&gt;        &lt;dbl&gt;
+ 1 PAL0708                   39.1                18.7         2.09
+ 2 PAL0708                   39.5                17.4         2.27
+ 3 PAL0708                   40.3                18           2.24
+ 4 PAL0708                   NA                  NA          NA   
+ 5 PAL0708                   36.7                19.3         1.90
+ 6 PAL0708                   39.3                20.6         1.91
+ 7 PAL0708                   38.9                17.8         2.19
+ 8 PAL0708                   39.2                19.6         2   
+ 9 PAL0708                   34.1                18.1         1.88
+10 PAL0708                   42                  20.2         2.08
+# ℹ 334 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="データを集計してみよう" class="slide level2">
+<h2>データを集計してみよう！</h2>
+<p><code>group_by</code>という関数でデータを特定のカテゴリごとにグループ化することができ、<code>summarize</code>という関数でグループごとの値を集計できます。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a>penguins_raw <span class="sc">%&gt;%</span> </span>
+<span id="cb54-2"><a href="#cb54-2"></a>  <span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span> </span>
+<span id="cb54-3"><a href="#cb54-3"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb54-4"><a href="#cb54-4"></a>    <span class="at">Mean_of_Culmen_Length =</span> <span class="fu">mean</span>(<span class="st">`</span><span class="at">Culmen Length (mm)</span><span class="st">`</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb54-5"><a href="#cb54-5"></a>    <span class="at">Mean_of_Culmen_Depth =</span> <span class="fu">mean</span>(<span class="st">`</span><span class="at">Culmen Depth (mm)</span><span class="st">`</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb54-6"><a href="#cb54-6"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  Species                             Mean_of_Culmen_Length Mean_of_Culmen_Depth
+  &lt;chr&gt;                                               &lt;dbl&gt;                &lt;dbl&gt;
+1 Adelie Penguin (Pygoscelis adeliae)                  38.8                 18.3
+2 Chinstrap penguin (Pygoscelis anta…                  48.8                 18.4
+3 Gentoo penguin (Pygoscelis papua)                    47.5                 15.0</code></pre>
+</div>
+</div>
+</section>
+<section id="データをプロットしてみよう" class="slide level2">
+<h2>データをプロットしてみよう！</h2>
+<p><code>ggplot2</code>というパッケージを使うことで、簡単にキレイなグラフを作ることができます。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins_raw) <span class="sc">+</span> </span>
+<span id="cb56-2"><a href="#cb56-2"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">Culmen Length (mm)</span><span class="st">`</span>, <span class="at">y =</span> <span class="st">`</span><span class="at">Culmen Depth (mm)</span><span class="st">`</span>, <span class="at">color =</span> Species, <span class="at">shape =</span> Island))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-17-1.png" width="960" class="r-stretch"></section>
+<section id="データをプロットしてみよう-1" class="slide level2">
+<h2>データをプロットしてみよう！</h2>
+<p><code>ggplot2</code>というパッケージを使うことで、簡単にキレイなグラフを作ることができます。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins_raw) <span class="sc">+</span> </span>
+<span id="cb57-2"><a href="#cb57-2"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">Delta 13 C (o/oo)</span><span class="st">`</span>, <span class="at">y =</span> <span class="st">`</span><span class="at">Delta 15 N (o/oo)</span><span class="st">`</span>, <span class="at">color =</span> Species, <span class="at">shape =</span> Island))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-18-1.png" width="960" class="r-stretch"><div class="footer footer-default">
+
+</div>
+</section></section>
     </div>
   </div>
 

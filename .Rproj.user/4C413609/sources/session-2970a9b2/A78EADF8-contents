@@ -1,24 +1,272 @@
 ---
-title: "Untitled"
-format: revealjs
+title: "はじめてのR"
+format: 
+  revealjs: 
+    theme: moon
+author: Kotaro Okano
 editor: source
 ---
 
-## Quarto
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
-Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+# Rとは？
 
-## Bullets
+## Rとは？①
 
-When you click the **Render** button a document will be generated that includes:
+> Rは***統計計算とグラフィックスのための言語と環境***である。  
+> https://www.r-project.org/about.html より一部抜粋; translated by https://www.deepl.com/
 
--   Content authored with markdown
--   Output from executable code
+::: {.callout-tip}
+Rはプログラミング言語の仲間として扱われますが、統計解析をするための作業環境を提供するソフトと考えるとわかりやすいです。
+:::
 
-## Code
+## Rとは？②
 
-When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+> Rは、***多種多様な統計的手法***（線形・非線形モデリング、古典的統計検定、時系列分析、分類、クラスタリング、...）や***グラフィカルな手法***を提供し、非常に拡張性が高い。  
+> https://www.r-project.org/about.html より一部抜粋; translated by https://www.deepl.com/
 
+::: {.callout-tip}
+Rには統計解析や可視化を行う上で有用なパッケージがそろっています。
+:::
+
+
+## Rとは？③
+
+> Rの強みの1つは、必要に応じて数学記号や数式を含め、出版物レベルの***プロットを簡単に作成できる***ことである。  
+> https://www.r-project.org/about.html より一部抜粋; translated by https://www.deepl.com/
+
+::: {.callout-tip}
+（慣れれば）Rを使って嫌いなグラフを簡単に作成することができます。
+:::
+
+## Rとは？④
+
+> Rは、フリーソフトウェア財団のGNU一般公衆利用許諾契約書の条項の下、ソースコード形式で***フリーソフトウェアとして利用可能***である。  
+> https://www.r-project.org/about.html より一部抜粋; translated by https://www.deepl.com/
+
+::: {.callout-tip}
+Rはフリーソフトかつクロスプラットフォームに対応しているので、容易に利用することが可能です。
+:::
+
+
+# Rでできること
+## 計算
 ```{r}
 1 + 1
+2 * 2
+1:10 * 1:10
+sum(1:10)
 ```
+
+## 描画
+```{r}
+plot(iris$Sepal.Length, iris$Petal.Length, col = iris$Species)
+```
+
+## データの読み書き
+```{r}
+d <- data.frame(
+  x = 1:10, 
+  y = LETTERS[1:10]
+)
+head(d)
+write.csv(d, "d.csv", row.names = FALSE)
+d_read <- read.csv("d.csv")
+head(d_read)
+```
+
+# Rのデータ型データ構造
+https://stats.biopapyrus.jp/r/basic/data-type.html
+## データ型
+数字や文字などの型が存在する
+```{r}
+typeof(1L)
+typeof(1.11)
+typeof("one")
+typeof(TRUE)
+```
+## データ構造
+ベクトルや行列、データフレーム、リストなどが存在する
+```{r}
+class(1L)
+class(1:10)
+class(matrix(1:4, ncol = 2))
+class(data.frame(x = 1:10))
+class(list(1:10, LETTERS[1:10]))
+```
+
+## 覚えておきたいデータ構造
+- 同じ型の要素が一列に入った***ベクトル***
+```{r}
+1:10
+LETTERS[1:10]
+c(TRUE, FALSE, TRUE)
+```
+
+## 覚えておきたいデータ構造
+- 要素数が同じベクトルを1セットにした***データフレーム***
+```{r}
+data.frame(
+  x = 1:3, 
+  y = LETTERS[1:3], 
+  z = c(TRUE, FALSE, TRUE)
+)
+head(iris)
+```
+
+## データフレームについて
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+rmarkdown::paged_table(head(iris))
+```
+:::
+
+::: {.column width="50%"}
+![<span style="font-size: 20%; ">https://commons.wikimedia.org/wiki/File:Flores_de_%C3%8Dris.png#/media/File:Flores_de_Íris.png</span>](images/Flores_de_Íris.png)
+:::
+
+::::
+- 生態学で用いるデータは表形式のことが多いためRに取り込むと必然的にデータフレームになる。
+- 少なくとも「同じ列には同じタイプの情報」という形式になっている必要がある。
+
+## Tidyなデータとは？
+
+> 整頓されたデータとは、作業がしやすいデータのことである。（dplyrで）つぶしたり、（ggplot2やggvisで）可視化したり、（Rの何百ものモデリング・パッケージで）モデル化したりするのが簡単である。整頓されたデータの2つの最も重要な特性は、以下の通りである：
+> 
+> - ***各列は変数である。***
+> - ***各行がオブザベーションである。***
+
+## Tidyなデータとは？
+
+> (続き)  
+> このようにデータを並べると、変数（列名）とオブザベーション（行インデックス）を参照する一貫した方法があるので、作業が簡単になります。整頓されたデータと整頓されたツールを使用すると、ある関数からの出力を別の関数の入力にどのように与えるかについて悩む時間が減り、データについての質問に答える時間が増えます。  
+>  
+> [Introducing tidyr](https://posit.co/blog/introducing-tidyr/)より一部抜粋。DeepLで翻訳
+
+## Tidyなデータとは？
+データ記録時にも最終的にはTidyなデータにして扱うことが想定されていることが望ましく、解析前にはTidyなデータに整形できていることが望ましい。
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+rmarkdown::paged_table(head(palmerpenguins::penguins_raw))
+```
+:::
+
+::: {.column width="50%"}
+![<span style="font-size: 20%; ">https://allisonhorst.github.io/palmerpenguins/</span>](images/culmen_depth.png)
+:::
+
+::::
+
+## データ解析の流れ
+![<span style="font-size: 20%; ">https://r4ds.hadley.nz/intro.html</span>](images/base.png)
+
+
+## 詳しくは*R for Data Science*をチェック！
+![https://r4ds.hadley.nz/](images/R4ds.png)
+
+# Rを使ってみよう！
+## ダウンロード＆インストール
+- CRANからRのダウンロード＆インストール
+https://cran.r-project.org/
+
+- PositからRStudioのダウンロード＆インストール
+https://posit.co/download/rstudio-desktop/
+
+::: {.callout-note}
+基本的にはRのインストール→RStudioのインストールの順で流れに沿って作業すれば、簡単に作業環境を整えることができます。またここらへんについてはたくさんの参考ページがあります。
+:::
+
+## RStudioを起動しよう
+インストールが終わったらRStudioを起動してみましょう。RStudioはRのIDE（統合開発環境）であり、この画面の中だけで多くの作業を簡潔に完結できます。
+
+::: {.column width="80%"}
+![](images/rstudio.png)
+
+:::
+
+
+## パッケージをインストールしよう！
+RStudioを起動出来たらパッケージをインストールしてみましょう。パッケージは使いやすいようにひとまとめにされたRの関数の集合であり、インストールすることでさまざまな作業が可能になります。
+```{r, eval=FALSE}
+install.packages("tidyverse")
+install.packages("palmerpenguins")
+```
+インストールが成功したら`library`関数で読み込んでみましょう。
+```{r}
+library(tidyverse)
+library(palmerpenguins)
+```
+
+## データを見てみよう！
+先ほどインストールした`palmerpenguins`パッケージには、南極のパルマ―・ステーションで調査されたペンギンのくちばしの長さのデータが入っています。  
+データの一つは`penguins_raw`という名前で呼び出すことができます。
+```{r}
+penguins_raw
+```
+
+## データを見てみよう！
+このように、Rでは特定のデータにたいして名前をつけて、それを簡単に呼び出すことができます。
+このようなデータ一つ一つを***オブジェクト***といい、つけられた名前をオブジェクト名といいます。  
+自分でオブジェクトを作る際には
+```
+(オブジェクト名) <- (入れたい中身)
+```
+という形式をとります。  
+例えば`penguins_raw`のコピーを`penguins_raw_copy`という名前のオブジェクトに入れたい場合には以下のようになります。
+```{r}
+penguins_raw_copy <- penguins_raw
+```
+
+## データを取り出してみよう！
+`select`という関数を使うことでデータフレームの特定の列を抜き出すことができます。また、`slice`という関数を使うことで特定の行を抜き出すことができます。
+
+```{r}
+penguins_raw %>% 
+  select(studyName, `Sample Number`, Species, `Culmen Length (mm)`) %>% 
+  slice(1:5)
+```
+
+## データから計算してみよう！
+`mutate`という関数を使うと、行同士の値から算出した新しい値を新しい行としてデータフレームに付け加えることができます。
+```{r}
+penguins_raw %>% 
+  select(studyName, `Culmen Length (mm)`, `Culmen Depth (mm)` ) %>% 
+  mutate(Culmen_ratio = `Culmen Length (mm)` / `Culmen Depth (mm)` )
+```
+
+## データを集計してみよう！
+`group_by`という関数でデータを特定のカテゴリごとにグループ化することができ、`summarize`という関数でグループごとの値を集計できます。
+```{r}
+penguins_raw %>% 
+  group_by(Species) %>% 
+  summarise(
+    Mean_of_Culmen_Length = mean(`Culmen Length (mm)`, na.rm = TRUE), 
+    Mean_of_Culmen_Depth = mean(`Culmen Depth (mm)`, na.rm = TRUE)
+  )
+```
+
+## データをプロットしてみよう！
+`ggplot2`というパッケージを使うことで、簡単にキレイなグラフを作ることができます。
+```{r}
+ggplot(data = penguins_raw) + 
+  geom_point(aes(x = `Culmen Length (mm)`, y = `Culmen Depth (mm)`, color = Species, shape = Island))
+```
+
+## データをプロットしてみよう！
+`ggplot2`というパッケージを使うことで、簡単にキレイなグラフを作ることができます。
+```{r}
+ggplot(data = penguins_raw) + 
+  geom_point(aes(x = `Delta 13 C (o/oo)`, y = `Delta 15 N (o/oo)`, color = Species, shape = Island))
+```
+
+
+
+
